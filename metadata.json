@@ -1,0 +1,6 @@
+{
+  "name": "Flo-write",
+  "description": "An elegant rich text, scriptwriting, poetry, and songwriting editor with specialized format hubs, audio metronome, and custom dual light/dark themes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

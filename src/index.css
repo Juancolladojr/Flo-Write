@@ -1,0 +1,623 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #edf6f0;
+    color: #13261a;
+  }
+}
+
+/* Custom Typography & Editor Font Classes */
+.font-sans-default {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+}
+.font-serif-merriweather {
+  font-family: 'Merriweather', serif !important;
+}
+.font-serif-playfair {
+  font-family: 'Playfair Display', Georgia, serif !important;
+}
+.font-mono-code {
+  font-family: 'JetBrains Mono', monospace !important;
+}
+.font-handwriting {
+  font-family: 'Caveat', cursive !important;
+}
+.font-display-outfit {
+  font-family: 'Outfit', sans-serif !important;
+}
+
+/* Base ProseMirror Styles */
+.ProseMirror {
+  outline: none;
+  min-height: 100%;
+  position: relative;
+  word-break: break-word;
+}
+
+.ProseMirror p.is-editor-empty:first-child::before {
+  color: #7b9985;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+  font-style: italic;
+}
+
+/* Headings with Editorial Hierarchy */
+.ProseMirror h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.25rem;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-top: 1.75rem;
+  margin-bottom: 0.85rem;
+  color: inherit;
+  letter-spacing: -0.02em;
+}
+
+.ProseMirror h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.65rem;
+  font-weight: 600;
+  line-height: 1.25;
+  margin-top: 1.5rem;
+  margin-bottom: 0.6rem;
+  color: inherit;
+  letter-spacing: -0.015em;
+}
+
+.ProseMirror h3 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: inherit;
+  letter-spacing: -0.01em;
+}
+
+.ProseMirror h4 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-top: 1rem;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #5e7a68;
+}
+
+.ProseMirror p {
+  margin-top: 0.65rem;
+  margin-bottom: 0.65rem;
+  line-height: 1.75;
+  font-size: 1.025rem;
+}
+
+/* Lists */
+.ProseMirror ul:not([data-type="taskList"]) {
+  list-style-type: disc;
+  padding-left: 1.6rem;
+  margin-top: 0.65rem;
+  margin-bottom: 0.65rem;
+}
+
+.ProseMirror ol {
+  list-style-type: decimal;
+  padding-left: 1.6rem;
+  margin-top: 0.65rem;
+  margin-bottom: 0.65rem;
+}
+
+.ProseMirror li {
+  margin-top: 0.35rem;
+  margin-bottom: 0.35rem;
+  line-height: 1.7;
+}
+
+/* Task / Checklist with Editorial Checkboxes */
+.ProseMirror ul[data-type="taskList"] {
+  list-style: none;
+  padding: 0;
+  margin: 0.85rem 0;
+}
+
+.ProseMirror ul[data-type="taskList"] li[data-type="taskItem"] {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.ProseMirror ul[data-type="taskList"] li[data-type="taskItem"] > label {
+  user-select: none;
+  display: flex;
+  align-items: center;
+  margin-top: 0.35rem;
+  cursor: pointer;
+}
+
+.ProseMirror ul[data-type="taskList"] li[data-type="taskItem"] input[type="checkbox"] {
+  cursor: pointer;
+  width: 1.05rem;
+  height: 1.05rem;
+  border-radius: 0.125rem;
+  accent-color: #ea580c;
+}
+
+.theme-dark .ProseMirror ul[data-type="taskList"] li[data-type="taskItem"] input[type="checkbox"] {
+  accent-color: #22c55e;
+}
+
+.ProseMirror ul[data-type="taskList"] li[data-type="taskItem"] > div {
+  flex: 1 1 auto;
+}
+
+.ProseMirror ul[data-type="taskList"] li[data-type="taskItem"][data-checked="true"] > div {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+/* Editorial Blockquote / Pull Quote */
+.ProseMirror blockquote {
+  border-top: 1px solid #d1e5d7;
+  border-bottom: 1px solid #d1e5d7;
+  border-left: none;
+  padding: 1.25rem 1rem;
+  margin: 1.75rem 0;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  text-align: center;
+  color: #13261a;
+  background: transparent;
+}
+
+/* Callout Boxes with Light Green + Orange and Dark Neon Green Palette */
+.callout {
+  padding: 1rem 1.25rem;
+  border-radius: 0.25rem;
+  margin: 1.35rem 0;
+  border-left: 3px solid #ea580c;
+  background-color: #f4faf6;
+  color: #13261a;
+  border-top: 1px solid #d1e5d7;
+  border-right: 1px solid #d1e5d7;
+  border-bottom: 1px solid #d1e5d7;
+}
+.callout-info {
+  border-left-color: #ea580c;
+  background-color: #fbfdfc;
+  color: #13261a;
+}
+.callout-success {
+  border-left-color: #16a34a;
+  background-color: #f0fdf4;
+  color: #14532d;
+}
+.callout-warning {
+  border-left-color: #f97316;
+  background-color: #fffaf0;
+  color: #9a3412;
+}
+.callout-tip {
+  border-left-color: #059669;
+  background-color: #ecfdf5;
+  color: #064e3b;
+}
+
+/* Inline Code & Code Block */
+.ProseMirror code:not(pre code) {
+  background: #e8f4ec;
+  color: #13261a;
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.2rem;
+  font-size: 0.875em;
+  font-family: 'JetBrains Mono', monospace;
+  border: 1px solid #d1e5d7;
+}
+
+.ProseMirror pre {
+  background: #090e0b;
+  color: #e5fbf0;
+  font-family: 'JetBrains Mono', monospace;
+  padding: 1.15rem 1.35rem;
+  border-radius: 0.25rem;
+  overflow-x: auto;
+  margin: 1.35rem 0;
+  border: 1px solid #1a3022;
+}
+
+.ProseMirror pre code {
+  color: inherit;
+  padding: 0;
+  background: none;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  border: none;
+}
+
+/* Horizontal Rule */
+.ProseMirror hr {
+  border: none;
+  border-top: 1px solid #d1e5d7;
+  margin: 2rem 0;
+}
+
+/* Links */
+.ProseMirror a {
+  color: #ea580c;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+  cursor: pointer;
+}
+
+.ProseMirror a:hover {
+  color: #c2410c;
+}
+
+/* Highlights */
+mark,
+.ProseMirror mark {
+  background-color: #fed7aa;
+  color: inherit;
+  padding: 0.1rem 0.3rem;
+  border-radius: 0.15rem;
+}
+mark.highlight-yellow { background-color: #fef08a; }
+mark.highlight-green  { background-color: #bbf7d0; }
+mark.highlight-blue   { background-color: #bae6fd; }
+mark.highlight-pink   { background-color: #fbcfe8; }
+mark.highlight-purple { background-color: #e9d5ff; }
+mark.highlight-orange { background-color: #fed7aa; }
+
+/* Tables */
+.ProseMirror table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+  margin: 1.5rem 0;
+  overflow: hidden;
+  border-radius: 0.125rem;
+  border: 1px solid #d1e5d7;
+}
+
+.ProseMirror td,
+.ProseMirror th {
+  min-width: 1em;
+  border: 1px solid #d1e5d7;
+  padding: 0.65rem 0.95rem;
+  vertical-align: top;
+  box-sizing: border-box;
+  position: relative;
+  text-align: left;
+}
+
+.ProseMirror th {
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background-color: #f4faf6;
+  color: #13261a;
+}
+
+.ProseMirror .selectedCell:after {
+  z-index: 2;
+  position: absolute;
+  content: "";
+  left: 0; right: 0; top: 0; bottom: 0;
+  background: rgba(234, 88, 12, 0.12);
+  pointer-events: none;
+}
+
+.ProseMirror .column-resize-handle {
+  position: absolute;
+  right: -2px;
+  top: 0;
+  bottom: -2px;
+  width: 3px;
+  background-color: #ea580c;
+  pointer-events: none;
+}
+
+/* Images */
+.ProseMirror img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.25rem;
+  margin: 1.25rem 0;
+  display: block;
+  border: 1px solid #d1e5d7;
+}
+
+.ProseMirror img.ProseMirror-selectednode {
+  outline: 2px solid #ea580c;
+}
+
+/* Document View Containers */
+.editor-page-shadow {
+  box-shadow: 0 1px 3px rgba(19, 38, 26, 0.04), 0 6px 16px rgba(19, 38, 26, 0.05);
+}
+
+/* Theme specifics: Light (Light Green + White + Orange Hint) */
+.theme-light {
+  background-color: #ffffff !important;
+  color: #13261a !important;
+}
+.theme-light .ProseMirror th {
+  background-color: #f4faf6 !important;
+  color: #13261a !important;
+}
+.theme-light .ProseMirror table,
+.theme-light .ProseMirror td,
+.theme-light .ProseMirror th {
+  border-color: #d1e5d7 !important;
+}
+.theme-light .ProseMirror blockquote {
+  border-top-color: #d1e5d7 !important;
+  border-bottom-color: #d1e5d7 !important;
+  color: #13261a !important;
+}
+.theme-light .ProseMirror hr {
+  border-top-color: #d1e5d7 !important;
+}
+.theme-light .ProseMirror a {
+  color: #ea580c !important;
+}
+.theme-light .song-badge {
+  background-color: #13261a !important;
+  color: #ffffff !important;
+}
+
+/* Theme specifics: Dark (Black + Neon Green) */
+.theme-dark {
+  background-color: #0a0f0c !important;
+  color: #e5fbf0 !important;
+}
+.theme-dark .ProseMirror th {
+  background-color: #101913 !important;
+  color: #4ade80 !important;
+}
+.theme-dark .ProseMirror table,
+.theme-dark .ProseMirror td,
+.theme-dark .ProseMirror th {
+  border-color: #1a3022 !important;
+}
+.theme-dark .ProseMirror blockquote {
+  border-top-color: #1a3022 !important;
+  border-bottom-color: #1a3022 !important;
+  color: #e5fbf0 !important;
+}
+.theme-dark .ProseMirror hr {
+  border-top-color: #1a3022 !important;
+}
+.theme-dark .ProseMirror a {
+  color: #22c55e !important;
+}
+.theme-dark .ProseMirror code:not(pre code) {
+  background: #0e1811 !important;
+  color: #4ade80 !important;
+  border-color: #1a3022 !important;
+}
+.theme-dark .callout {
+  background-color: #0c140f !important;
+  border-color: #1a3022 !important;
+  border-left-color: #22c55e !important;
+  color: #e5fbf0 !important;
+}
+.theme-dark .callout-info {
+  background-color: #0c140f !important;
+  border-left-color: #22c55e !important;
+  color: #e5fbf0 !important;
+}
+.theme-dark .callout-success {
+  background-color: #091a10 !important;
+  border-left-color: #00ff66 !important;
+  color: #a7f3d0 !important;
+}
+.theme-dark .callout-warning {
+  background-color: #161a0c !important;
+  border-left-color: #facc15 !important;
+  color: #fef08a !important;
+}
+.theme-dark .callout-tip {
+  background-color: #091712 !important;
+  border-left-color: #2dd4bf !important;
+  color: #99f6e4 !important;
+}
+.theme-dark .song-badge {
+  background-color: #22c55e !important;
+  color: #000000 !important;
+}
+.theme-dark .song-chord-line {
+  color: #4ade80 !important;
+}
+
+/* Fallback themes styled consistently */
+.theme-sepia {
+  background-color: #ffffff !important;
+  color: #13261a !important;
+}
+.theme-nord {
+  background-color: #0a0f0c !important;
+  color: #e5fbf0 !important;
+}
+
+/* Screenwriting Format Styles */
+.screenplay-container {
+  font-family: 'JetBrains Mono', 'Courier New', Courier, monospace !important;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.screenplay-slugline {
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-top: 1.75rem !important;
+  margin-bottom: 0.75rem !important;
+  letter-spacing: 0.05em;
+}
+.screenplay-action {
+  margin-top: 0.75rem !important;
+  margin-bottom: 0.75rem !important;
+  text-align: left;
+}
+.screenplay-character {
+  text-transform: uppercase;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 1.5rem !important;
+  margin-bottom: 0.2rem !important;
+  letter-spacing: 0.08em;
+}
+.screenplay-parenthetical {
+  font-style: italic;
+  text-align: center;
+  margin-top: 0.1rem !important;
+  margin-bottom: 0.2rem !important;
+  color: #5e7a68;
+}
+.theme-dark .screenplay-parenthetical {
+  color: #6f9c7d !important;
+}
+.screenplay-dialogue {
+  max-width: 460px;
+  margin: 0 auto 0.75rem auto !important;
+  text-align: left;
+  line-height: 1.5;
+}
+.screenplay-transition {
+  text-transform: uppercase;
+  font-weight: 700;
+  text-align: right;
+  margin-top: 1.5rem !important;
+  margin-bottom: 1.5rem !important;
+  letter-spacing: 0.05em;
+}
+
+/* Stage Play Format Styles */
+.stageplay-container {
+  font-family: 'Merriweather', Georgia, serif !important;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+.play-act-scene {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  margin: 2rem 0 1rem 0;
+}
+.play-stage-direction {
+  font-style: italic;
+  margin: 1.25rem 0 !important;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+.play-dialogue {
+  margin: 0.85rem 0 !important;
+  line-height: 1.7;
+  padding-left: 1.5rem;
+  text-indent: -1.5rem;
+}
+
+/* Songwriting Format Styles */
+.songwriting-container {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.song-section-header {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.song-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  background-color: #13261a;
+  color: #ffffff;
+  border-radius: 0.125rem;
+}
+.song-badge-pre {
+  background-color: #ea580c !important;
+  color: #ffffff !important;
+}
+.theme-dark .song-badge-pre {
+  background-color: #16a34a !important;
+  color: #000000 !important;
+}
+.song-badge-chorus {
+  background-color: #15803d !important;
+  color: #ffffff !important;
+}
+.theme-dark .song-badge-chorus {
+  background-color: #22c55e !important;
+  color: #000000 !important;
+}
+.song-badge-bridge {
+  background-color: #c2410c !important;
+  color: #ffffff !important;
+}
+.theme-dark .song-badge-bridge {
+  background-color: #4ade80 !important;
+  color: #000000 !important;
+}
+.song-chord-line {
+  margin-top: 0.75rem !important;
+  margin-bottom: 0.1rem !important;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  color: #ea580c;
+}
+.theme-dark .song-chord-line {
+  color: #4ade80 !important;
+}
+.song-lyric-line {
+  margin-top: 0.1rem !important;
+  margin-bottom: 0.6rem !important;
+  font-size: 1.05rem;
+}
+
+/* Poetry Format Styles */
+.poetry-manuscript-container {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+.poetry-stanza {
+  margin: 1.5rem 0;
+  line-height: 2;
+}
+
+/* Print Rules */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .editor-page-container {
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+  }
+  .editor-page-sheet {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
